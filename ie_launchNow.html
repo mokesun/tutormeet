@@ -1,0 +1,148 @@
+<html lang="en">
+<!--<![endif]-->
+<head>
+
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<title>TutorMeet | Member</title>
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+<link type="text/css" rel="stylesheet" href="./css/ie78.css">
+<link type="text/css" rel="stylesheet" href="./css/calendrical.css">
+
+</head>
+<body class="locale" class="en">
+
+<div class="settings-navigation">
+    <div id="hide_nav" class="container-fluid nav-mask" style="opacity: 1;"></div>
+    <div class="col-md-4 col-sm-8 col-xs-6 nav-wrap" style="right: 0px;">
+        <ul>
+            <li class="side_title">
+                <span class="">Sun Kanjue</span> 
+                <span class="close-settings"><img src="./img/close.png" width="25" height="25" /></span>
+            </li>
+            <li><a href="ie_accountInfo.html">ACCOUNT INFO</a></li>
+            <li><div class="divider"></div></li>            
+            <li>
+                <a href="#/accountInfo">SIGN OUT</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container2-top">
+        <div class="main_header">
+            <div class="container-fluid">
+                <div class="logo">
+                    <a >
+                        TutorMeet Enterprise
+                    </a>
+                </div>
+                <div class="settings">
+                    <div class="user_wrap">
+                        <span class="user_name">sun kanjue</span>
+                        <span class="img_wrap small_wrap">
+                            <span class="setting-btn"><img src="./img/settings.png" width="30" height="30" /></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="container-form">
+        <div class="title">
+            <span><a href="ie_meeting.html"><img src="./img/back.jpg" width="15" height="15" /></a><span style="color:#999;font-size:28px;font-weight:bold;margin-left:10px;">LAUNCH</span></span>
+        </div>
+
+        <div class="content">
+            <div class="meeting-form">
+                <div class="label">MEETING SUBJECT</div>
+                <div class="label"><input class="meeting-subject" type="text" title="Describe what the meeting is about" /></div>
+                <div class="label">DESCRIPTION</div>
+                <div class="label"><textarea class="meeting-desc" title="Describe more about this meeting"></textarea></div>
+                <div class="label">MEETING TYPE</div>
+                <div>
+                    <label class="meet-type-label"><input type="radio" name="meeting-type" value="6" checked="checked" />Group Meeting</label>
+                    <label class="meet-type-label"><input type="radio" name="meeting-type" value="33" />Webinar</label>
+                </div>
+                <div class="label">INVITE ATTENDEES</div>
+                <div class="label"><input class="invite-address" type="text" title="Enter attendees email" /></div>
+                <div class="label">INVITE LIVE TRANSLATORS</div>
+                <div class="label invite-list">
+                    <div class="trans-item item-template">
+                        <div class="email-box"><input class="trans-email" type="text" disabled="disabled" title="Enter translator email"/></div>
+                        <div class="lang-box"><input class="trans-lang" type="text" disabled="disabled" title="Enter language" /></div>
+                        <div class="action-box"><a class="add-trans"><img src="./img/add.jpg" width="25" height="25" /></a></div>
+                    </div>
+                </div>      
+
+                <div class="checkbox-label">
+                    <label><input class="turn-on-meeting" type="checkbox" name="turn-on-meeting"/>Turn on meeting recording</label>
+                </div>
+                <div class="checkbox-label">
+                    <label><input type="checkbox" id="select-server"/>Select server location</label>
+                </div>
+                <div class="server-list" style="display:none;">
+                    <ul>
+                        <li><label><input type="radio" name="server-location" value="Default" checked="checked" />Default</label></li>
+                        <li><label><input type="radio" name="server-location" value="AWS_CN"/>AWS_CN</label></li>
+                        <li><label><input type="radio" name="server-location" value="AWS_US"/>AWS_US</label></li>
+                        <li><label><input type="radio" name="server-location" value="CN"/>CN</label></li>
+                        <li><label><input type="radio" name="server-location" value="HK"/>HK</label></li>
+                        <li><label><input type="radio" name="server-location" value="TW"/>TW</label></li>
+                    </ul>
+                </div>
+                <div class="wrap">
+                    <a class="launch-now">LAUNCH MEETING</a>
+                    <div class="sp" style="margin:50px;"></div>
+                    <div class="reset"><a class="reset-launch-form" style="color:#999;">Reset all fields to default</a></div>
+                </div>
+                
+        
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="main_footer">
+        <div class="page_wrap">
+            <ul>
+                <li class="ng-binding">&copy; <span class="cur_year">2016</span> TutorGroup Inc. All rights reserved.</li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li>
+                    <span class="languages">Language:</span>
+                    <span class="language_wrap">
+                        <select id="switchLang">
+                            <option value="en" selected="selected">English</option>
+                            <option value="tw">繁體中文</option>
+                            <option value="cn">简体中文</option>
+                        </select>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Add for IE 7 AND IE 8-->
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/json3.min.js"></script>
+<script src="./js/jquery.calendrical.js"></script>
+<script src="./js/moment-with-locales.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/config.js?version=20141226"></script>
+<script src="./js/ie_meeting_account.js"></script>
+
+
+
+
+
+</body>
+</html>

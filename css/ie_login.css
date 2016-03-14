@@ -1,0 +1,6 @@
+
+.main_nav li{float: left;}
+#signup .name {width: 45%; }
+#signup .email {width: 90%;}
+#signup .password {width: 45%;}
+#signup .password2 {width: 45%; }

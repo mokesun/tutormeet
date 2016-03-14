@@ -1,0 +1,543 @@
+input, select, textarea{
+	padding: 5px;
+}
+.container-top{
+    background:url("https://corp.tutormeet.com/tutormeetent/img/gl/bg_banner.jpg") no-repeat;
+    height: 150px;
+    padding: 130px 0 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container2-top{
+    height: 66px;
+    width: 100%;
+    margin: 0 auto;
+}
+.main_header {
+    background: #ccc none repeat scroll 0 0;
+    left: 0;
+    padding: 10px 5px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    height: 50px;
+    line-height: 50px;
+}
+.logo{
+    float: left;
+    width: 80%;
+
+}
+.settings{
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+.setting-btn{
+	cursor: pointer;
+	position: relative;
+    top: 10px;
+}
+.close-settings{
+	cursor: pointer;
+}
+.filter-meeting{
+    clear: both;
+    background-color:#efefef;
+    width: 86%;
+    padding: 2px 0px;
+    margin: 0 auto;
+    height: 400px;
+}
+.filter-label{
+    padding: 5px 0;
+}
+.filter-chk-btn{
+    float: right;
+}
+.filter-conditions{
+    padding: 20px;
+}
+.filter-box-l{
+    float: left;
+    width: 45%;
+    text-align: left;
+    padding: 0 20px;
+}
+.filter-box-r{
+    float: left;
+    width: 45%;
+    text-align: left;
+    padding: 0 20px;
+}
+.divider-line{
+    clear: both;
+    padding: 10px 0;
+}
+.filter-date{
+    float: left;
+    width: 30%;
+    padding: 10px 0;
+    margin-right: 55px;
+}
+.apply-filter{
+    background:#00f;
+    padding: 20px 50px;
+    color:#fff;
+    cursor: pointer;
+}
+.settings-navigation {
+    bottom: 0;
+    display: none;
+    position: absolute;
+    right: -300px;
+    top: 0;
+    transition: all 0.25s ease-in-out 0s;
+    z-index: 9;
+    right: 0px; 
+    height: 771px;
+}
+.nav-wrap {
+    background: #f5f5f7 none repeat scroll 0 0;
+    border: medium none;
+    box-shadow: 10px -10px 20px rgba(0, 0, 0, 0.1) inset;
+    height: 100%;
+    left: -300px;
+    padding: 0;
+    position: absolute;
+    transition: left 0.3s ease-in-out 0s;
+    width: 300px;
+}
+.settings-navigation .nav-wrap ul {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0 0 20px;
+    padding: 0;
+}
+ol, ul {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+ul {
+    list-style: outside none none;
+}
+.settings-navigation .nav-wrap ul li.side_title {
+    background-color: rgba(134, 145, 165, 0.3);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 23px 40px;
+    text-align: right;
+}
+.settings-navigation .nav-wrap ul li {
+    list-style: outside none none;
+    padding: 10px 40px;
+    text-align: right;
+}
+.divider {
+    background-color: #d5d5dd;
+    height: 1px;
+    width: 100%;
+}
+
+
+.launch-mode{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+.launch-wrap{
+  width: 80%;
+  margin: 0 auto;  
+  text-align:center; 
+}
+.launch-meeting{
+    float: left;
+    width: 30%;
+    background: #00F;
+    padding: 20px;
+    text-align: center;
+}
+.launch-meeting a{
+    color:#fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.join-meeting{
+    float: left;
+    width: 30%;
+    padding: 5px;
+    background: #fff;
+}
+.schedule-meeting{
+    float: left;
+    width: 30%;
+    background: #00F;
+    text-align: center;
+    padding: 20px;
+}
+.schedule-meeting a{
+    color:#fff;
+    padding: 10px;
+
+    cursor: pointer;
+}
+.container-middle{    
+	text-align: center;
+    padding: 10px;
+    min-height: 290px;
+    margin-top: 50px;
+    height:auto !important;
+	height:290px;
+}
+.meeting-current{
+	margin: 0 auto;
+	width: 80%;
+}
+.meeting-banner{
+    float: left;
+    padding: 20px 0;
+}
+.meeting-search{
+    float: right;
+    text-align: right;
+    padding: 0 45px 0 0;
+}
+.search-p{
+	border:1px solid #ccc;float: right;margin: 0 5px;
+}
+.meeting-list{
+    padding: 0 0px;
+    margin: 0 auto;
+	width: 87%;
+}
+.meeting-list ul{
+	float: left;
+    list-style: none;
+    width: 90%;
+}
+.meeting-list .meeting-item{
+	/*background: #eee none repeat scroll 0 0;*/
+    float: left;
+    margin-bottom: 10px;
+    padding: 0px 0px;
+    width: 100%;
+    text-align: left;
+}
+.show-details, .start-meeting, .close-details{
+	cursor: pointer;
+	text-align: center;
+	color: #999;
+}
+
+.small-view{
+	padding: 10px 5px;
+}
+.small-view .meeting-time{
+    float: left;
+    width: 20%;
+}
+.small-view .meeting-title{
+    float: left;
+    width: 45%;
+}
+.small-view .meeting-host{
+    float: left;
+    width: 25%;
+}
+.small-view .meeting-action{
+    float: left;
+    text-align: center;
+    width: 5%;
+}
+.view-details{
+	float: left;
+    width: 100%;
+    background: #eee none repeat scroll 0 0;
+    padding: 0 0 20px 0;
+}
+.view-details .details-title{
+    background-color:#333;
+    color:#fff;
+    padding: 0px 20px;
+    height: 50px;    
+    line-height: 50px;
+}
+.details-title .details-time{
+    float: left;
+    width:60%;        
+}
+.details-title .details-id{
+    float: left;
+    width:30%;        
+}
+.details-title .details-close{
+    float: right;
+    width:5%;        
+}
+.details-body{
+	padding: 10px 20px;
+}
+.details-body .body-left{
+    float: left;
+    width: 60%;
+}
+.details-body .body-right{
+    float: left;
+    width: 40%;
+}
+.no-meeting-content{
+	float: left;
+    min-height: 300px;
+    height: 300px;
+    margin: 0 auto;
+	width: 100%;
+}
+.no-meeting{
+    margin:0 auto;
+    text-align: center;
+}
+.no-meeting .calendar_bg{
+	background:url("../img/calendar_bg.png")  no-repeat center center;
+	background-size: 100px 100px;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    font-weight: bold;
+    font-size:52px;
+    color:#333;
+    line-height: 200px;
+    filter:alpha(opacity=50);
+    padding-top:30px;
+}
+
+.container-form{    
+	text-align: center;
+    padding: 10px;
+    min-height: 290px;
+    height:auto !important;
+	height:290px;
+}
+.container-form .title{
+	width: 80%;
+	 margin: 15px auto;
+    text-align: left;
+}
+.container-form .content{
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+.meeting-form{        
+    background-color: #F9F9F9;
+    padding: 40px 40px 20px;
+}
+.meeting-form .label{
+    margin:18px 0;
+    color:#666;
+}
+.meeting-form .checkbox-label{
+	float: left;
+	width: 100%;
+    margin:18px 0;
+}
+.meeting-form .wrap{
+    clear: both;
+    padding: 50px 0;
+    text-align: center;
+}
+.meeting-form .launch-now{
+    background:#00f;
+    padding: 20px;
+    color:#fff;
+    cursor: pointer;
+}
+.meeting-form .reset{
+    padding: 5px 0 50px 0;
+    text-align: center;
+	cursor: pointer;
+}
+.launch-form .meet-type-label{
+    margin-right:50px;
+}
+.server-list ul{
+    list-style: none;
+}
+.server-list li{
+    float: left;
+    margin-right: 25px;
+}
+.meeting-form .email-box{
+    float: left;
+    width: 50%;
+    padding:10px 0;
+    margin-right:20px;
+}
+.meeting-form .trans-email{
+    width: 100%;
+}
+.meeting-form .lang-box{
+    float: left;
+    width: 30%;
+    padding:10px 0;
+}
+.meeting-form .trans-lang{
+    width: 100%;
+}
+.meeting-form .action-box{
+    float: left;
+    padding: 10px 0;
+    margin-left:20px;
+}
+
+.meeting-form .meeting-subject{
+    width: 100%;
+}
+.meeting-form .meeting-desc{
+    height: 50px;
+    width: 100%;
+}
+.meeting-form .invite-address{
+    width: 100%;
+}
+.meeting-form .action-box{
+	color:#000;
+}
+.select-datetime{
+	clear: both;
+}
+.date-label{
+	float: left;
+    width: 30%;
+    padding:10px 0;
+    margin-right:20px;
+}
+.time-label{
+	float: left;
+    width: 30%;
+    padding:10px 0;
+    margin-right:20px;
+}
+.duration-label{
+	float: left;
+    width: 20%;
+    padding:10px 0;
+    margin-right:20px;
+}
+.uint-label{
+	float: left;
+    width: 10%;
+    padding:10px 0;
+    margin-right:20px;
+}
+.time-zone{
+	clear: both;
+}
+.select-timezone{
+	width: 90%;	
+}
+.meeting-form .schedule-meeting-btn{
+    background:#00f;
+    padding: 20px;
+    color:#fff;
+    cursor: pointer;
+}
+.account-info-title{
+	width: 60% !important;
+}
+.account-info{
+	width: 60% !important;
+}
+.first-name-label{
+	float: left;
+    width: 45%;
+    padding:10px 0;
+}
+.last-name-label{
+	float: right;
+    width: 45%;
+    padding:10px 0;
+    margin-left:30px;
+}
+.phone-number{
+	width: 100%;
+}
+.first-name-label input{
+	width: 100%;
+}
+.last-name-label input{
+	width: 100%;
+}
+.change-password{
+	padding: 10px;
+	border:1px solid #666;
+	color: #666;
+}
+.hide-password{
+	padding: 10px;
+	border:1px solid #666;
+	color: #666;
+}
+.meeting-form .save-account{
+    background:#00f;
+    padding: 20px 50px;
+    color:#fff;
+    cursor: pointer;
+}
+.password, .new-password, .confirm-password{
+	width: 100%;
+}
+.password-btn-wrap{
+	padding: 20px !important;
+}
+
+.main_footer{
+	float: left;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+
+.page_wrap{
+    width: 80%;
+    margin:0 auto;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding: 20px 0 50px 0;
+}
+.main_footer ul{
+	width: 100%;
+    text-align: center;
+}
+.main_footer li{
+    float: left;
+    color: #d5d5dd;
+    display: inline-block;
+    line-height: 12px;
+    padding: 0 7px;
+}
+
+
+
+.transparent_class {  
+    /* Required for IE 5, 6, 7 */  
+    /* ...or something to trigger hasLayout, like zoom: 1; */  	
+    background:#000;  
+    color:#fff;  
+    /* older safari/Chrome browsers */  
+    -webkit-opacity: 0.5;  
+    /* Netscape and Older than Firefox 0.9 */  
+    -moz-opacity: 0.5;  
+    /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
+    -khtml-opacity: 0.5;  
+    /* IE9 + etc...modern browsers */  
+    opacity: .5;  
+    /* IE 4-9 */  
+    filter:alpha(opacity=50);  
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  
+    /*IE4-IE9*/  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);  
+}  

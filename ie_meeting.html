@@ -1,0 +1,221 @@
+<html lang="en">
+<!--<![endif]-->
+<head>
+
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<title>TutorMeet | Member</title>
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+<link type="text/css" rel="stylesheet" href="./css/ie78.css">
+<link type="text/css" rel="stylesheet" href="./css/calendrical.css">
+
+</head>
+<body class="locale" class="en">
+
+<div class="settings-navigation">
+    <div id="hide_nav" class="container-fluid nav-mask" style="opacity: 1;"></div>
+    <div class="col-md-4 col-sm-8 col-xs-6 nav-wrap" style="right: 0px;">
+        <ul>
+            <li class="side_title">
+                <span class="">Sun Kanjue</span> 
+                <span class="close-settings"><img src="./img/close.png" width="25" height="25" /></span>
+            </li>
+            <li><a href="ie_accountInfo.html">ACCOUNT INFO</a></li>
+            <li><div class="divider"></div></li>            
+            <li>
+                <a href="#/accountInfo">SIGN OUT</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container-top">
+        <div class="main_header transparent_class">
+            <div class="container-fluid">
+                <div class="logo">
+                    <a >
+                        TutorMeet Enterprise
+                    </a>
+                </div>
+                <div class="settings">
+                    <div class="user_wrap">
+                        <span class="user_name">sun kanjue</span>
+                        <span class="img_wrap small_wrap">
+                            <span class="setting-btn"><img src="./img/settings.png" width="30" height="30" /></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="launch-mode">
+            <div class="launch-wrap">
+                <div class="launch-meeting">                    
+                    <a href="ie_launchNow.html">
+                        LAUNCH MEETING
+                    </a>
+                </div>
+                <div class="join-meeting">
+                    <input type="text" id="meetingid" style="width:100%;height:50px;line-height:50px;padding:0px;border:1px solid #fff;" />
+                </div>
+                <div class="schedule-meeting">
+                    <a href="ie_scheduleMeeting.html"> SCHEDULE MEETING</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-middle">
+        <div class="meeting-current">
+            <div class="meeting-banner">
+                <span style="color:#999;">CURRENT & UPCOMING </span><span>MEETINGS</span>
+            </div>
+            <div class="meeting-search">
+                <input type="text" name="searchmeeting" />                
+                <a class="search-p filter-icon"><img src="./img/filter.png" width="30" height="30" /></a>
+                <a class="search-p search"><img src="./img/search.png" width="30" height="30" /></a>
+            </div>    
+        </div>
+
+        <div class="filter-meeting" style="display: none;">
+            <div class="filter-title"><h2>FILTER BY</h2></div>
+            <div class="filter-conditions">
+                <div class="filter-box-l">
+                    <div class="filter-label"><label>Current & Upcoming</label><input class="filter-chk-btn" type="radio" name="searchfilter" value="upcoming" checked="checked" /></div>
+                    <div class="filter-label"><label>Date Range</label><input class="filter-chk-btn" type="radio" name="searchfilter" value="range" /></div>
+                    <div>
+                        <div class="filter-date">
+                            <div class="label">FROM</div>
+                            <input id="from-date" class="from-date date" type="text" readonly="readonly" disabled="disabled"  title="Enter date (yyyy-MM-dd)"/>
+                        </div>
+                        <div class="filter-date">
+                            <div class="label">TO</div>
+                            <input id="to-date" class="to-date date" type="text" readonly="readonly" disabled="disabled" title="Enter date (yyyy-MM-dd)"/>
+                        </div>
+                    </div>
+                    <div class="divider-line"><div class="divider"></div></div>
+                    <div class="filter-label"><label>All Meetings</label><input class="filter-chk-btn" type="radio" name="hostby" value="0" checked="checked"/></div>
+                    <div class="filter-label"><label>Hosted By Me</label><input class="filter-chk-btn" type="radio" name="hostby" value="1"/></div>
+                    <div class="filter-label"><label>Hosted By Others</label><input class="filter-chk-btn" type="radio" name="hostby" value="2"/></div>
+                </div>
+                <div class="filter-box-r">
+                    <div class="filter-label"><label>Show Meetings With Attachments Only</label><input class="filter-chk-btn" type="checkbox" name="showattachment" /></div>
+                    <div class="filter-label"><label>Show Meetings With Quizzes Only</label><input class="filter-chk-btn" type="checkbox" name="showquiz" /></div>
+                    <div class="filter-label"><label>Show Meetings With Surveys Only</label><input class="filter-chk-btn" type="checkbox" name="showsurvey" /></div>
+                    <div class="filter-label"><label>Show Meetings With Unfinished Quizzes/ Surveys</label><input class="filter-chk-btn" type="checkbox" name="shownewtasks" /></div>
+                </div>
+            </div>   
+            <div class="wrap" style="clear: both;padding: 30px 0;">
+                    <a class="apply-filter">APPLY</a>
+            </div>       
+        </div>
+
+        <div class="meeting-list">
+            <ul> 
+                <li class="meeting-item meeting-item-template" style="display:none;">
+                    <div class="small-view" style="display:none;">
+                        <div class="meeting-time">
+                            <span>Feb 21, 2016</span><br/>
+                            <span>2:09 PM CST</span>
+                        </div>
+                        <div class="meeting-title">
+                            <h3>test</h3>
+                        </div>
+                        <div class="meeting-host">
+                            <span>ID: 894-716-037</span><br/>
+                            <span>H: sun kanjue</span>
+                        </div>
+                        <div class="meeting-action">
+                            <a class="show-details">
+                                <span><img src="./img/details.png" width="30" height="30" /></span><br/>
+                                <span>DETAILS</span>
+                            </a>
+                        </div>
+                        <div class="meeting-action">
+                            <a class="start-meeting">
+                                <span><img src="./img/play.png" width="30" height="30" /></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="view-details" style="display:none;">
+                        <div class="details-title">
+                            <div class="details-time">
+                                <span>Feb 21, 2016</span>
+                                <span>2:09 PM CST</span>
+                            </div>
+                            <div class="details-id">
+                                ID: 894-716-037
+                            </div>
+                            <div class="details-close">
+                                <a class="close-details">close</a>
+                            </div>
+                        </div>
+                        <div class="details-body">
+                            <div class="body-left">
+                                <div class="details-subject"><h3>test</h3></div>
+                                <div style="color:#999;">DESCRIPTION</div>
+                                <div class="details-desc"><h4>test</h4></div>
+                            </div>
+                            <div class="body-right">
+                                <div style="padding: 10px 0;">HOST: sun kanjue</div>
+                                <div style="color:#999;">ATTENDEES</div>
+                                <div class="invitees"></div>
+                                <div style="color:#999;padding: 10px 0;">TRANSLATORS</div>
+                                <div class="translator-list">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="no-meeting-content" style="display:none;">
+            <div class="no-meeting">
+                <div class="img calendar_bg">
+                    27
+                </div>
+                <div class="no-meeting-text" style="color:#333;font-size:24px;">You have not scheduled any meetings</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="main_footer">
+        <div class="page_wrap">
+            <ul>
+                <li class="ng-binding">&copy; <span class="cur_year">2016</span> TutorGroup Inc. All rights reserved.</li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li>
+                    <span class="languages">Language:</span>
+                    <span class="language_wrap">
+                        <select id="switchLang">
+                            <option value="en" selected="selected">English</option>
+                            <option value="tw">繁體中文</option>
+                            <option value="cn">简体中文</option>
+                        </select>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add for IE 7 AND IE 8-->
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/json3.min.js"></script>
+<script src="./js/jquery.calendrical.js"></script>
+<script src="./js/moment-with-locales.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/config.js?version=20141226"></script>
+<script src="./js/ie_meeting_account.js"></script>
+
+</body>
+</html>
