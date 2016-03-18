@@ -21,7 +21,7 @@ window.console = window.console || (function(){
         var USER_INFO = {};
 
         //Meeting List page
-        //
+        //日历控件
         $("#from-date").calendricalDate({usa:true});
 
         $("#to-date").calendricalDate({usa:true});
@@ -137,8 +137,8 @@ window.console = window.console || (function(){
 
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param='+encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param='+encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {      
                     data = JSON.parse(data);        
                     var returnCode = data.returnCode;
@@ -236,8 +236,8 @@ window.console = window.console || (function(){
 
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param='+encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param='+encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {      
                     data = JSON.parse(data);        
                     var returnCode = data.returnCode;
@@ -301,8 +301,8 @@ window.console = window.console || (function(){
             var jsonInput = { action:"joinMeeting", meetingId:meetingId };
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {     
                     data = JSON.parse(data);
                     var returnCode = data.returnCode;
@@ -362,8 +362,8 @@ window.console = window.console || (function(){
 
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 //url: 'http://192.168.8.89:67/api/values?json=1',
                 success: function(data) {     
                     data = JSON.parse(data);
@@ -390,11 +390,54 @@ window.console = window.console || (function(){
                         
 
                             meetingTemplate.find("a.show-details").attr('data',data.meetings[m].meetingSn);
+                            meetingTemplate.find("a.show-details").attr('data-time',data.meetings[m].startTime);
                             meetingTemplate.find("a.show-details").bind('click',function(){
                                 $(this).parent().parent(".small-view").hide();
                                 $(this).parent().parent(".small-view").next(".view-details").show();
+
                                 //get Meeting Invitees
+                                // 获取data.meetings[m].meetingSn
                                 var meetingSn = $(this).attr('data');
+                                // 获取data.meetings[m].startTime
+                                var startTime = $(this).attr('data-time');
+
+                                // 判断是否显示DELETE MEETING按钮
+                                if(new Date().getTime() < parseInt(startTime)){
+                                   $(this).parent().parent(".small-view").next(".view-details").find(".details-btn").show();
+                                   $(this).parent().parent(".small-view").next(".view-details").find(".delete-btn").attr('data',meetingSn);
+                                   // DELETE MEETING button
+                                   $(this).parent().parent(".small-view").next(".view-details").find(".delete-btn").click(function(){
+                                        var meetingSn = $(this).attr('data');
+                                        $(this).parent(".details-btn").next(".masklay").show();
+                                        $(this).parent(".details-btn").next().next(".overlay").show();
+                                        $(this).parent(".details-btn").next().next(".overlay").children('.yes-btn').attr('data', meetingSn);
+                                        // close overlay---no-btn
+                                        $(this).parent(".details-btn").next().next(".overlay").children(".lay-close").click(function(){
+                                            $(this).parent(".overlay").hide();
+                                            $(this).parent(".overlay").prev(".masklay").hide();
+                                        });
+
+                                        $(this).parent(".details-btn").next().next(".overlay").children(".no-btn").click(function(){
+                                            $(this).parent(".overlay").hide();
+                                            $(this).parent(".overlay").prev(".masklay").hide();
+                                        });
+
+                                        // delete meetinglist---yes-btn
+                                        $(this).parent(".details-btn").next().next(".overlay").children('.yes-btn').click(function(){
+                                            var meetingSn = $(this).attr('data');
+                                            $(this).parent(".overlay").hide();
+                                            $(this).parent(".overlay").prev(".masklay").hide();
+
+                                            cancelMeeting(meetingSn);
+                                        });
+                                   });
+
+                                }
+                                else{
+                                    $(this).parent().parent(".small-view").next(".view-details").find(".details-btn").hide();
+                                }  
+
+                                // 获取email
                                 var parentDiv = $(this).parent().parent(".small-view").next(".view-details").find(".invitees");
                                 parentDiv.html('');
                                 getMeetingInvitees(meetingSn, parentDiv,function(invitees){
@@ -403,6 +446,7 @@ window.console = window.console || (function(){
                                     }                                    
                                 });
                                 //get Meeting Translators
+                                // 获取翻译人员的email
                                 var parentDivTrans = $(this).parent().parent(".small-view").next(".view-details").find(".translator-list");
                                 parentDivTrans.html('');
                                 getMeetingTranslators(meetingSn, parentDivTrans, function(translators){
@@ -413,6 +457,7 @@ window.console = window.console || (function(){
                                         parentDivTrans.append($translator);
                                     }
                                 });
+
                             });
                             meetingTemplate.find("a.start-meeting").attr('data',data.meetings[m].meetingId);
                             meetingTemplate.find("a.start-meeting").bind('click',function(){
@@ -429,10 +474,9 @@ window.console = window.console || (function(){
                             meetingTemplate.find("a.close-details").bind('click',function(){
                                 $(this).parent().parent().parent(".view-details").hide();
                                 $(this).parent().parent().parent(".view-details").prev(".small-view").show();
-                            });
+                            }); 
 
                             $(".meeting-list").find("ul").append(meetingTemplate);
-
 
                         }
                     } else {
@@ -440,7 +484,7 @@ window.console = window.console || (function(){
                     }
                 },
                 error: function(data) {                    
-                    //console.log('fail');
+                    // console.log('fail');
                 }
             });
         };
@@ -448,8 +492,8 @@ window.console = window.console || (function(){
             var jsonInput = { action:"getMeetingInvitees", meetingSn:meetingSn };
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {     
                     data = JSON.parse(data);
                     var returnCode = data.returnCode;
@@ -475,8 +519,8 @@ window.console = window.console || (function(){
             var jsonInput = { action:"getMeetingTranslators", meetingSn:meetingSn };
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {     
                     data = JSON.parse(data);
                     var returnCode = data.returnCode;
@@ -498,6 +542,36 @@ window.console = window.console || (function(){
                 }
             });
         };
+
+        function cancelMeeting(meetingSn) {
+            var jsonInput = {action:'cancelMeeting', meetingSn:meetingSn};
+            // console.log(jsonInput);return;
+            $.ajax({
+                type: "GET",
+                //url: API_ROOT + '/corpmeeting.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?param=' + encodeURIComponent(JSON.stringify(jsonInput)),
+                //url: 'http://192.168.8.89:67/api/values?json=1',
+                success: function(data) {
+                    data = JSON.parse(data);
+                    var returnCode = data.returnCode;
+                    if(returnCode == 0) {
+                        location.href = "ie_meeting.html";
+                    } else {
+                        // show error
+                        if (returnCode == -3) {
+                            alert(data.message);
+                        } else if (returnCode == -4) {
+                            alert(data.message);
+                        } else {
+                            alert("System error. Error code:" + returnCode);
+                        }
+                    }
+                },
+                error: function(data) {
+                    console.log('fail');
+                }
+            });
+        }
         //Account info 
         
         initAccountInfo();
@@ -519,8 +593,8 @@ window.console = window.console || (function(){
             }; 
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpuser.do?json='+ encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?user=1&param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpuser.do?json='+ encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?user=1&param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {     
                     USER_INFO = data = JSON.parse(data);
                     var returnCode = data.returnCode;
@@ -581,8 +655,8 @@ window.console = window.console || (function(){
             }
             $.ajax({
                 type: "GET",
-                //url: API_ROOT + '/corpuser.do?json='+encodeURI(JSON.stringify(jsonInput)),
-                url: 'http://192.168.8.89:67/api/values?user=1&param=' + encodeURI(JSON.stringify(jsonInput)),
+                //url: API_ROOT + '/corpuser.do?json='+encodeURIComponent(JSON.stringify(jsonInput)),
+                url: 'http://localhost:88/api/values?user=1&param=' + encodeURIComponent(JSON.stringify(jsonInput)),
                 success: function(data) {     
                     data = JSON.parse(data);
                     var returnCode = data.returnCode;
@@ -639,13 +713,14 @@ function str2timespan(stringTime){
     timestamp2 = timestamp2 / 1000;
     return timestamp2;
 }
+// 格式化时间
 function formatTime(hour, minute)
 {
     var printHour = hour % 12;
     //if (printHour == 0) printHour = 12;
     var printMinute = minute;
     if (minute < 10) printMinute = '0' + minute;
-    var half = (hour < 12 && hour >= 0) ? 'am' : 'pm';
+    var half = (hour < 12 && hour >= 0) ? ' am' : ' pm';
     if(hour==12) printHour="12";
     return printHour + ':' + printMinute + half;
 }

@@ -10,45 +10,107 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+ 
+<link rel="icon" type="image/png" href="https://corp.tutormeet.com/tutormeetent/img/mobile/icon_60.png">
+ 
+<link type="text/css" rel="stylesheet" href="https://corp.tutormeet.com/tutormeetent/css/vendor/reset.css">
+<link type="text/css" rel="stylesheet" href="https://corp.tutormeet.com/tutormeetent/css/vendor/main.css">
+<link type="text/css" rel="stylesheet" href="https://corp.tutormeet.com/tutormeetent/css/vendor/intl-tel-input/css/intlTelInput.css">
+<link type="text/css" rel="stylesheet" href="https://corp.tutormeet.com/tutormeetent/css/style.css">
 
-<link rel="icon" type="image/png" href="../../img/mobile/icon_60.png">
-
-<link type="text/css" rel="stylesheet" href="../../css/vendor/reset.css">
-<link type="text/css" rel="stylesheet" href="../../css/vendor/main.css">
-<link type="text/css" rel="stylesheet" href="../../css/vendor/intl-tel-input/css/intlTelInput.css">
-<link type="text/css" rel="stylesheet" href="../../css/style.css">
-
-<link href="../../img/mobile/icon_60.png" rel="apple-touch-icon" />
-<link href="../../img/mobile/icon_76.png" rel="apple-touch-icon" sizes="76x76" />
-<link href="../../img/mobile/icon_120.png" rel="apple-touch-icon" sizes="120x120" />
-<link href="../../img/mobile/icon_152.png" rel="apple-touch-icon" sizes="152x152" />
-
-<script src="../../js/vendor/modernizr/2.8.3/modernizr.js"></script>
-<script src="../../js/debug/plugins.js"></script>
-<script src="../../js/debug/detect.js"></script>
+<link type="text/css" rel="stylesheet" href="./css/ie_login.css">
+ 
+<link href="https://corp.tutormeet.com/tutormeetent/img/mobile/icon_60.png" rel="apple-touch-icon" />
+<link href="https://corp.tutormeet.com/tutormeetent/img/mobile/icon_76.png" rel="apple-touch-icon" sizes="76x76" />
+<link href="https://corp.tutormeet.com/tutormeetent/img/mobile/icon_120.png" rel="apple-touch-icon" sizes="120x120" />
+<link href="https://corp.tutormeet.com/tutormeetent/img/mobile/icon_152.png" rel="apple-touch-icon" sizes="152x152" />
+ 
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/modernizr/2.8.3/modernizr.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/debug/plugins.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/debug/detect.js"></script>
 <!--[if IE 8]>
-<script src="../../js/vendor/es5-shim/4.4.1/es5-shim.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/es5-shim/4.4.1/es5-shim.min.js"></script>
 <![endif]-->
 <!--[if lt IE 8]>
-<script src="../../js/vendor/json3/3.3.2/lib/json3.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/json3/3.3.2/lib/json3.min.js"></script>
 <![endif]-->
+ 
+ <script type="text/javascript">
+  var params = {
+    left: 0,
+    top: 0,
+    currentX: 0,
+    currentY: 0,
+    flag: false
+  };
 
-<script type="text/javascript">
+  var getCss = function(o,key){
+    return o.currentStyle? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];   
+  };
+
+
+  var startDrag = function(bar, target, callback){
+    if(getCss(target, "left") !== "auto"){
+      params.left = getCss(target, "left");
+    }
+    if(getCss(target, "top") !== "auto"){
+      //params.top = getCss(target, "top");
+    }
+
+    bar.onmousedown = function(event){
+      params.flag = true;
+      if(!event){
+        event = window.event;
+        bar.onselectstart = function(){
+          return false;
+        }  
+      }
+      var e = event;
+      params.currentX = e.clientX;
+      params.currentY = e.clientY;
+    };
+    document.onmouseup = function(){
+      params.flag = false;  
+      if(getCss(target, "left") !== "auto"){
+        params.left = getCss(target, "left");
+      }
+      if(getCss(target, "top") !== "auto"){
+        //params.top = getCss(target, "top");
+      }
+    };
+    document.onmousemove = function(event){
+      var e = event ? event: window.event;
+      if(params.flag){
+        var nowX = e.clientX, nowY = e.clientY;
+        var disX = nowX - params.currentX, disY = nowY - params.currentY;
+        target.style.left = parseInt(params.left) + disX + "px";
+        //target.style.top = parseInt(params.top) + disY + "px";
+      }
+      
+      if (typeof callback == "function") {
+        callback(parseInt(params.left) + disX, parseInt(params.top) + disY);
+      }
+    } 
+  };
+ </script>
+
+
+<script type="text/javascript"> 
   if (Detect.browser == 'Explorer') {
     if (Detect.version < 7) {
-      location.replace('../../outdated_browser.html');
+      //location.replace('https://corp.tutormeet.com/tutormeetent/outdated_browser.html');
     }
     else if (Detect.version > 8) {
-      location.replace('./index.html');
+      //location.replace('./index.html');
     }
   }
   else {
-    location.replace('./index.html');
+    //location.replace('./index.html');
   }
 </script>
-
-<script type="text/javascript">
-
+ 
+<script type="text/javascript"> 
+ 
 var localizedStrings = {
   loginFailed: '*Your username or password is invalid.',
   invalidEmail: '*Your Email is invalid.',
@@ -74,7 +136,7 @@ var localizedStrings = {
   emailSent: 'EMAIL SENT'
 };
 </script>
-
+ 
 </head>
 <body class="en theme_full_bg">
 <!-- Start : Login Container -->
@@ -82,27 +144,27 @@ var localizedStrings = {
     <section class="form_container">
         <div class="bg_graphic"></div>
         <div class="logo_wrap">
-            <div class="icon_logo"><img src="../../img/ie/main_logo_white.png" alt="Main Logo"></div>
-            <div class="txt_logo"><img src="../../img/ie/main_logo_txt_white.png" alt="Text Logo"></div>
+            <div class="icon_logo"><img src="https://corp.tutormeet.com/tutormeetent/img/ie/main_logo_white.png" alt="Main Logo"></div>
+            <div class="txt_logo"><img src="https://corp.tutormeet.com/tutormeetent/img/ie/main_logo_txt_white.png" alt="Text Logo"></div>
         </div>
         <div class="error_msg">
             <p></p>
         </div>
         <div class="form_wrap">
-            <form id="login" method="post" style="display:none">
+            <form id="login" method="post">
                 <input class="email" type="email" name="email" onkeyup="value=maskInputValidation(value)" placeholder="Email Address" required>
                 <input class="password pwdFormat" type="password" name="pwd" placeholder="Password" required>
                 <button class="green_btn login_btn" type="submit">LOGIN</button>
                 <a name="forgotPwd" class="forgot" href="">Forgot Password?</a>
             </form>
-            <form id="forgot_pwd" method="post" style="display:none">
+            <form id="forgot_pwd" method="post">
                 <h1 name="forgotPwdTitle">Forgot your password?</h1>
                 <p name="forgotPwdDesc">Enter your email address. You will receive a confirmation email with instruction to reset your password.</p>
                 <p name="forgotPwdNext">Please check your email for the new password.　If you don&#39;t receive confirmation email, you may need to check your spam folder or unblock noreply@tutormeetcorp.com.</p>
                 <input class="email" type="email" name="email" placeholder="Email Address" required>
                 <button class="green_btn send_btn" type="submit">Send</button>
             </form>
-            <form id="change_pwd" method="post" style="display:none">
+            <form id="change_pwd" method="post">
                 <h1 name="changePwdTitle">Forgot your password?</h1>
                 <p name="changePwdDesc">Please enter a new password for your account.</p>
                 <input class="pwdFormat" type="password" name="pwd" placeholder="Password">
@@ -111,7 +173,7 @@ var localizedStrings = {
                 <input type="hidden" name="token" value="">
                 <button class="green_btn send_btn" type="submit">Send</button>
             </form>
-            <form id="signup" method="post" style="display:none">
+            <form id="signup" method="post">
                 <!-- <p class="signupTitle">We are currently in <i>Beta testing</i> and are <i>invite only</i>. Fill out the form below to request an invite</p> -->
                 <input class="name" type="text" name="fname" placeholder="First Name" onkeyup="value=maskInputValidation(value)" maxlength="19" required>
                 <input class="name" type="text" name="lname" placeholder="Last Name" onkeyup="value=maskInputValidation(value)" maxlength="19" required>
@@ -120,8 +182,8 @@ var localizedStrings = {
                 <input class="password pwdFormat" type="password" name="pwd" placeholder="Password" maxlength="20" required>
                 <input class="password2 pwdFormat" type="password" name="confirmPwd" placeholder="Confirm Password" maxlength="20" required>
                 <div id="testH2C">
-                  <div class="src circle">1</div>
-                  <div class="dest circle">2</div>
+                  <div id="src-circle" class="src circle">1</div>
+                  <div id="dest-circle" class="dest circle">2</div>
                   <div class="desc">Drag circle 1 to circle 2 to show that you’re a human.</div>
                 </div>
                 <button class="green_btn signup_btn" type="submit">SIGN UP</button>
@@ -139,28 +201,29 @@ var localizedStrings = {
                 <p name="confirmMsgDesc">You have signed up successfully.</p>
             </div>
         </div>
-        <nav class="main_nav" style="display:none">
+
+        <nav class="main_nav">
             <ul>
-                <li class="active" data-type="login"><a class="login_tab" href="">LOGIN</a></li>
-                <li data-type="signup"><a class="signup_tab" href="">SIGN UP</a></li>
-                <li data-type="join_meeting"><a class="join_tab" href="">JOIN MEETING</a></li>
+                <li class="active" data-type="login"><a class="login_tab" href="#">LOGIN</a></li>
+                <li data-type="signup"><a class="signup_tab" href="#">SIGN UP</a></li>
+                <li data-type="join_meeting"><a class="join_tab" href="#">JOIN MEETING</a></li>
             </ul>
         </nav>
     </section>
-
+ 
     <!-- Start : Main Footer -->
     <footer class="main_footer">
         <nav class="page_wrap">
             <ul>
                 <li>&copy; <span class="cur_year">2016</span> TutorGroup Inc. All rights reserved.</li>
-                <li><a href="../../ie_terms.html" target="_blank">Terms of Use</a></li>
-                <li><a href="../../ie_privacy.html" target="_blank">Privacy Policy</a></li>
+                <li><a href="https://corp.tutormeet.com/tutormeetent/ie_terms.html" target="_blank">Terms of Use</a></li>
+                <li><a href="https://corp.tutormeet.com/tutormeetent/ie_privacy.html" target="_blank">Privacy Policy</a></li>
                 <li><div class="languages">
                     <span>Language:</span>
                     <span class="select_wrap">
                         <select id="changeLocale">
                             <option value="en-US" selected>English</option>
-                            <option value="zh-TW" >繁體中文</option>
+                            <option value="zh-TW" >繁体中文</option>
                             <option value="zh-CN" >简体中文</option>
                         </select>
                     </span>
@@ -170,28 +233,31 @@ var localizedStrings = {
         </nav>
     </footer><!-- End : Main Footer -->
 </section><!-- Start : Login Container -->
-
-
-
+ 
+ 
+ 
 <!-- Javascript: Load graphic first then function -->
-
+ 
 <!-- Javascript: vendor -->
-<script src="../../js/vendor/jquery/1.11.3/jquery.min.js"></script>
-<script src="../../js/vendor/greensock/1.18.0/src/minified/TweenMax.min.js"></script>
-<script src="../../js/vendor/intl-tel-input/3.6.4/js/intlTelInput.min.js"></script>
-<script src="../../js/vendor/jquery-ui/1.11.4/jquery-ui.min.js"></script>
-<script src="../../js/vendor/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<!-- Remove for IE 7 AND IE 8-->
+<!-- <script src="https://corp.tutormeet.com/tutormeetent/js/vendor/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/greensock/1.18.0/src/minified/TweenMax.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/intl-tel-input/3.6.4/js/intlTelInput.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/jquery-ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/vendor/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+<!-- Add for IE 7 AND IE 8-->
+<script src="./js/jquery-1.8.3.min.js"></script>
 <!--[if IE 9]>
 <script>
     sessionStorage.setItem('homepage-language', 'en-US');
-
+ 
     $("#mobile-number").intlTelInput({onlyCountries: ["us","cn","tw","jp","ko","sg","hk","au","gb","ca","za"],
-                                    utilsScript: "../../js/vendor/intl-tel-input/3.6.4/js/utils.js",
+                                    utilsScript: "https://corp.tutormeet.com/tutormeetent/js/vendor/intl-tel-input/3.6.4/js/utils.js",
                                     preferredCountries: ["us","cn","tw"]});
 </script>
 <![endif]-->
-
-<script>
+ 
+<script> 
     try {
       sessionStorage.setItem('homepage-language', 'en-US');
     }
@@ -199,20 +265,24 @@ var localizedStrings = {
       console.log('failed to call sessionStorage.setItem()');
     }
 
-    $("#mobile-number").intlTelInput({onlyCountries: ["us","cn","tw","jp","ko","sg","hk","au","gb","ca","za"],
-                                    utilsScript: "../../js/vendor/intl-tel-input/3.6.4/js/utils.js",
-                                    preferredCountries: ["us","cn","tw"],
-                                    autoHideDialCode: false});
+    //Add for IE 7 AND IE 8
+    // $("#mobile-number").intlTelInput({onlyCountries: ["us","cn","tw","jp","ko","sg","hk","au","gb","ca","za"],
+    //                                 utilsScript: "https://corp.tutormeet.com/tutormeetent/js/vendor/intl-tel-input/3.6.4/js/utils.js",
+    //                                 preferredCountries: ["us","cn","tw"],
+    //                                 autoHideDialCode: false});
 </script>
-
+ 
 <!-- Javascript: Custom -->
-<script src="../../js/config.js?version=20141226"></script>
-<script src="../../js/login.js?version=20141226"></script>
-<script src="../../js/languages/localisation.js?version=20141226"></script>
-
+<script src="https://corp.tutormeet.com/tutormeetent/js/config.js?version=20141226"></script>
+<!-- Remove for IE 7 AND IE 8-->
+<!-- <script src="https://corp.tutormeet.com/tutormeetent/js/login.js?version=20141226"></script> -->
+<!-- Add for IE 7 AND IE 8-->
+<script src="./js/ie_login.js?version=20141226"></script>
+<script src="https://corp.tutormeet.com/tutormeetent/js/languages/localisation.js?version=20141226"></script>
+ 
 <!-- Fall Back for IE -->
 <!--[if lt IE 10]>
-    <script src="../../js/ie/ie9.js"></script>
+    <script src="https://corp.tutormeet.com/tutormeetent/js/ie/ie9.js"></script>
     <script>
       $(document).ready(function() {
         setTimeout(function() {
@@ -228,15 +298,16 @@ var localizedStrings = {
       });
     </script>
 <![endif]-->
-
+ 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
+<script> 
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
+ 
     ga('create', 'UA-57704859-1', 'auto');
     ga('send', 'pageview');
 </script>
 </body>
 </html>
+

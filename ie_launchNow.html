@@ -22,12 +22,18 @@
         <ul>
             <li class="side_title">
                 <span class="">Sun Kanjue</span> 
-                <span class="close-settings"><img src="./img/close.png" width="25" height="25" /></span>
+                <span class="close-settings">
+                    <img src="./img/close.png" width="25" height="25" />
+                </span>
             </li>
-            <li><a href="ie_accountInfo.html">ACCOUNT INFO</a></li>
-            <li><div class="divider"></div></li>            
             <li>
-                <a href="#/accountInfo">SIGN OUT</a>
+                <a href="ie_accountInfo.html">ACCOUNT INFO</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>            
+            <li>
+                <a href="ie_login.html">SIGN OUT</a>
             </li>
         </ul>
     </div>
@@ -38,15 +44,17 @@
         <div class="main_header">
             <div class="container-fluid">
                 <div class="logo">
-                    <a >
-                        TutorMeet Enterprise
+                    <a href="ie_meeting.html">
+                        <img src="./img/logo.jpg" alt="logo">
                     </a>
                 </div>
                 <div class="settings">
                     <div class="user_wrap">
                         <span class="user_name">sun kanjue</span>
                         <span class="img_wrap small_wrap">
-                            <span class="setting-btn"><img src="./img/settings.png" width="30" height="30" /></span>
+                            <span class="setting-btn">
+                                <img src="./img/settings.png" width="30" height="30" />
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -57,51 +65,103 @@
     
     <div class="container-form">
         <div class="title">
-            <span><a href="ie_meeting.html"><img src="./img/back.jpg" width="15" height="15" /></a><span style="color:#999;font-size:28px;font-weight:bold;margin-left:10px;">LAUNCH</span></span>
+            <span>
+                <a href="ie_meeting.html">
+                    <img src="./img/back.jpg" width="15" height="15" />
+                </a>
+                <span style="color:#999;font-size:28px;font-weight:bold;margin-left:10px;">LAUNCH</span>
+            </span>
         </div>
 
         <div class="content">
             <div class="meeting-form">
                 <div class="label">MEETING SUBJECT</div>
-                <div class="label"><input class="meeting-subject" type="text" title="Describe what the meeting is about" /></div>
+                <div class="label">
+                    <input class="meeting-subject" type="text" title="Describe what the meeting is about" />
+                </div>
                 <div class="label">DESCRIPTION</div>
-                <div class="label"><textarea class="meeting-desc" title="Describe more about this meeting"></textarea></div>
+                <div class="label">
+                    <textarea class="meeting-desc" title="Describe more about this meeting"></textarea>
+                </div>
                 <div class="label">MEETING TYPE</div>
                 <div>
-                    <label class="meet-type-label"><input type="radio" name="meeting-type" value="6" checked="checked" />Group Meeting</label>
-                    <label class="meet-type-label"><input type="radio" name="meeting-type" value="33" />Webinar</label>
+                    <label class="meet-type-label">
+                        <input type="radio" name="meeting-type" value="6" checked="checked" />Group Meeting
+                    </label>
+                    <label class="meet-type-label">
+                        <input type="radio" name="meeting-type" value="33" />Webinar
+                    </label>
                 </div>
                 <div class="label">INVITE ATTENDEES</div>
-                <div class="label"><input class="invite-address" type="text" title="Enter attendees email" /></div>
+                <div class="label">
+                    <input class="invite-address" type="text" title="Enter attendees email" />
+                </div>
                 <div class="label">INVITE LIVE TRANSLATORS</div>
                 <div class="label invite-list">
                     <div class="trans-item item-template">
-                        <div class="email-box"><input class="trans-email" type="text" disabled="disabled" title="Enter translator email"/></div>
-                        <div class="lang-box"><input class="trans-lang" type="text" disabled="disabled" title="Enter language" /></div>
-                        <div class="action-box"><a class="add-trans"><img src="./img/add.jpg" width="25" height="25" /></a></div>
+                        <div class="email-box">
+                            <input class="trans-email" type="text" disabled="disabled" title="Enter translator email"/>
+                        </div>
+                        <div class="lang-box">
+                            <input class="trans-lang" type="text" disabled="disabled" title="Enter language" />
+                        </div>
+                        <div class="action-box">
+                            <a class="add-trans">
+                                <img src="./img/add.jpg" width="25" height="25" />
+                            </a>
+                        </div>
                     </div>
                 </div>      
 
                 <div class="checkbox-label">
-                    <label><input class="turn-on-meeting" type="checkbox" name="turn-on-meeting"/>Turn on meeting recording</label>
+                    <label>
+                        <input class="turn-on-meeting" type="checkbox" name="turn-on-meeting"/>Turn on meeting recording
+                    </label>
                 </div>
                 <div class="checkbox-label">
-                    <label><input type="checkbox" id="select-server"/>Select server location</label>
+                    <label>
+                        <input type="checkbox" id="select-server"/>Select server location
+                    </label>
                 </div>
                 <div class="server-list" style="display:none;">
                     <ul>
-                        <li><label><input type="radio" name="server-location" value="Default" checked="checked" />Default</label></li>
-                        <li><label><input type="radio" name="server-location" value="AWS_CN"/>AWS_CN</label></li>
-                        <li><label><input type="radio" name="server-location" value="AWS_US"/>AWS_US</label></li>
-                        <li><label><input type="radio" name="server-location" value="CN"/>CN</label></li>
-                        <li><label><input type="radio" name="server-location" value="HK"/>HK</label></li>
-                        <li><label><input type="radio" name="server-location" value="TW"/>TW</label></li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="Default" checked="checked" />Default
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="AWS_CN"/>AWS_CN
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="AWS_US"/>AWS_US
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="CN"/>CN</label>
+                            </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="HK"/>HK
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="server-location" value="TW"/>TW
+                            </label>
+                        </li>
                     </ul>
                 </div>
                 <div class="wrap">
                     <a class="launch-now">LAUNCH MEETING</a>
                     <div class="sp" style="margin:50px;"></div>
-                    <div class="reset"><a class="reset-launch-form" style="color:#999;">Reset all fields to default</a></div>
+                    <div class="reset">
+                        <a class="reset-launch-form" style="color:#999;">Reset all fields to default</a>
+                    </div>
                 </div>
                 
         
@@ -114,9 +174,15 @@
     <div class="main_footer">
         <div class="page_wrap">
             <ul>
-                <li class="ng-binding">&copy; <span class="cur_year">2016</span> TutorGroup Inc. All rights reserved.</li>
-                <li><a href="terms.html">Terms of Use</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li class="ng-binding">
+                    &copy; <span class="cur_year">2016</span> TutorGroup Inc. All rights reserved.
+                </li>
+                <li>
+                    <a href="terms.html">Terms of Use</a>
+                </li>
+                <li>
+                    <a href="privacy.html">Privacy Policy</a>
+                </li>
                 <li>
                     <span class="languages">Language:</span>
                     <span class="language_wrap">
@@ -136,13 +202,12 @@
 <script src="./js/jquery-1.8.3.min.js"></script>
 <script src="./js/json3.min.js"></script>
 <script src="./js/jquery.calendrical.js"></script>
-<script src="./js/moment-with-locales.min.js"></script>
+<!-- <script src="./js/moment-with-locales.min.js"></script> -->
 <script src="https://corp.tutormeet.com/tutormeetent/js/config.js?version=20141226"></script>
-<script src="./js/ie_meeting_account.js"></script>
-
-
-
-
+<!-- <script src="./js/ie_meeting_account.js"></script> -->
+<script src="./js/ie_launch.js"></script>
+<script src="./js/ie_function.js"></script>
+<script src="./js/ie_common.js"></script>
 
 </body>
 </html>

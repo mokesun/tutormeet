@@ -92,7 +92,7 @@
         //if (printHour == 0) printHour = 12;
         var printMinute = minute;
         if (minute < 10) printMinute = '0' + minute;
-        var half = (hour < 12 && hour >= 0) ? 'am' : 'pm';
+        var half = (hour < 12 && hour >= 0) ? ' am' : ' pm';
         if(hour==12) printHour="12";
         return printHour + ':' + printMinute + half;
     }

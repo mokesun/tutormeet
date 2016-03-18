@@ -1,12 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 input, select, textarea{
 	padding: 5px;
+}
+img {
+    border: none;
+}
+a{
+    border: 0;
+    text-decoration: none;
 }
 .container-top{
     background:url("https://corp.tutormeet.com/tutormeetent/img/gl/bg_banner.jpg") no-repeat;
     height: 150px;
     padding: 130px 0 0;
+    *height: 280px;
     width: 100%;
-    margin: 0 auto;
 }
 
 .container2-top{
@@ -15,7 +26,7 @@ input, select, textarea{
     margin: 0 auto;
 }
 .main_header {
-    background: #ccc none repeat scroll 0 0;
+    background: #EBEBEB none repeat scroll 0 0;
     left: 0;
     padding: 10px 5px;
     position: absolute;
@@ -29,6 +40,11 @@ input, select, textarea{
     float: left;
     width: 80%;
 
+}
+.logo img {
+    width: 200px;
+    height: 50px;
+    border:none
 }
 .settings{
     float: left;
@@ -44,6 +60,7 @@ input, select, textarea{
 	cursor: pointer;
 }
 .filter-meeting{
+    display: none;
     clear: both;
     background-color:#efefef;
     width: 86%;
@@ -51,11 +68,18 @@ input, select, textarea{
     margin: 0 auto;
     height: 400px;
 }
+.filter-meeting .filter-title{
+    margin-top: 20px;
+}
 .filter-label{
-    padding: 5px 0;
+    /*padding: 5px 0;*/
+    margin: 10px 0;
+    position: relative;
 }
 .filter-chk-btn{
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    right: 5px;
 }
 .filter-conditions{
     padding: 20px;
@@ -80,7 +104,7 @@ input, select, textarea{
     float: left;
     width: 30%;
     padding: 10px 0;
-    margin-right: 55px;
+    margin-right: 10%;
 }
 .apply-filter{
     background:#00f;
@@ -97,7 +121,7 @@ input, select, textarea{
     transition: all 0.25s ease-in-out 0s;
     z-index: 9;
     right: 0px; 
-    height: 771px;
+    height: 100%;
 }
 .nav-wrap {
     background: #f5f5f7 none repeat scroll 0 0;
@@ -120,7 +144,7 @@ ol, ul {
     margin-top: 0;
 }
 ul {
-    list-style: outside none none;
+    list-style: none;
 }
 .settings-navigation .nav-wrap ul li.side_title {
     background-color: rgba(134, 145, 165, 0.3);
@@ -131,13 +155,15 @@ ul {
     text-align: right;
 }
 .settings-navigation .nav-wrap ul li {
-    list-style: outside none none;
+    list-style: none;
     padding: 10px 40px;
     text-align: right;
 }
 .divider {
-    background-color: #d5d5dd;
     height: 1px;
+    background-color: #d5d5dd;
+    *border-top: 1px solid #d5d5dd;
+    *background-color: rgba(134, 145, 165, 0.3);
     width: 100%;
 }
 
@@ -163,12 +189,24 @@ ul {
     color:#fff;
     padding: 10px;
     cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.launch-meeting a span{
+    font-weight: bolder;
 }
 .join-meeting{
     float: left;
     width: 30%;
-    padding: 5px;
+    padding: 4px;
     background: #fff;
+}
+#meetingid{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    padding:0px;
+    border:1px solid #fff;
 }
 .schedule-meeting{
     float: left;
@@ -180,8 +218,12 @@ ul {
 .schedule-meeting a{
     color:#fff;
     padding: 10px;
-
+    text-decoration: none;
     cursor: pointer;
+    letter-spacing: 1px;
+}
+.schedule-meeting a span{
+    font-weight: bolder;
 }
 .container-middle{    
 	text-align: center;
@@ -203,14 +245,30 @@ ul {
     float: right;
     text-align: right;
     padding: 0 45px 0 0;
+    *margin-right: 45px;
+}
+.meeting-search input{
+    display: block;
+    height: 30px;
+    float: right;
 }
 .search-p{
-	border:1px solid #ccc;float: right;margin: 0 5px;
+	border:0px;
+    float: right;
+    margin: 0 5px;
 }
 .meeting-list{
     padding: 0 0px;
     margin: 0 auto;
 	width: 87%;
+    *zoom:1;
+}
+.meeting-list:after {
+    content: ""; 
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 .meeting-list ul{
 	float: left;
@@ -219,12 +277,14 @@ ul {
 }
 .meeting-list .meeting-item{
 	/*background: #eee none repeat scroll 0 0;*/
+    display: none;
     float: left;
     margin-bottom: 10px;
     padding: 0px 0px;
     width: 100%;
     text-align: left;
 }
+
 .show-details, .start-meeting, .close-details{
 	cursor: pointer;
 	text-align: center;
@@ -232,6 +292,7 @@ ul {
 }
 
 .small-view{
+    display: none;
 	padding: 10px 5px;
 }
 .small-view .meeting-time{
@@ -241,6 +302,7 @@ ul {
 .small-view .meeting-title{
     float: left;
     width: 45%;
+    *width: 40%;
 }
 .small-view .meeting-host{
     float: left;
@@ -252,6 +314,7 @@ ul {
     width: 5%;
 }
 .view-details{
+    display: none;
 	float: left;
     width: 100%;
     background: #eee none repeat scroll 0 0;
@@ -282,12 +345,78 @@ ul {
 .details-body .body-left{
     float: left;
     width: 60%;
+    *width:55%;
+}
+.details-body .body-left .details-btn .edit-btn{
+    display: none;
+    float: left;
+    border: none;
+    background: #26e6cd;
+    border-color: #26e6cd;
+    margin: 10px 10px 10px 0;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+.details-body .body-left .details-btn .edit-btn:hover{
+    background: #20B2AA;
+    cursor: pointer;
+}
+.details-body .body-left .details-btn .delete-btn{
+    display: block;
+    float: left;
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #8692a5;
+    border: 1px solid #999;
+}
+.details-body .body-left .details-btn .delete-btn:hover{
+    background: #8B3A3A;
+    color: #fff;
+    cursor: pointer;
 }
 .details-body .body-right{
     float: left;
     width: 40%;
 }
+.details-body .body-right .new-quiz .add-quiz {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    width: 120px;
+    border: none;
+    margin: 10px 0 50px;
+    background: #16e2f5;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+.details-body .body-right .survey .survey-btn {
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 150px;
+    border: none;
+    margin: 10px 0 30px;
+    background: #16e2f5;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+} 
+.details-body .body-right .new-quiz .add-quiz:hover, .details-body .body-right .survey .survey-btn:hover{
+    background: #008B8B;
+    cursor: pointer;
+}
 .no-meeting-content{
+    display: none;
 	float: left;
     min-height: 300px;
     height: 300px;
@@ -311,7 +440,12 @@ ul {
     filter:alpha(opacity=50);
     padding-top:30px;
 }
-
+#Pagination {
+    position: relative;
+    left: 40%;
+    bottom: 10px;
+    *margin-left: 40%;
+}
 .container-form{    
 	text-align: center;
     padding: 10px;
@@ -321,7 +455,7 @@ ul {
 }
 .container-form .title{
 	width: 80%;
-	 margin: 15px auto;
+	margin: 15px auto;
     text-align: left;
 }
 .container-form .content{
@@ -395,8 +529,9 @@ ul {
     width: 100%;
 }
 .meeting-form .meeting-desc{
-    height: 50px;
+    height: 80px;
     width: 100%;
+    overflow-y: hidden; 
 }
 .meeting-form .invite-address{
     width: 100%;
@@ -446,6 +581,12 @@ ul {
 .account-info-title{
 	width: 60% !important;
 }
+.account-info-title span span {
+    color:#999;
+    font-size:28px;
+    font-weight:bold;
+    margin-left:10px;
+}
 .account-info{
 	width: 60% !important;
 }
@@ -470,11 +611,13 @@ ul {
 	width: 100%;
 }
 .change-password{
+    cursor: pointer;
 	padding: 10px;
 	border:1px solid #666;
 	color: #666;
 }
 .hide-password{
+    cursor: pointer;
 	padding: 10px;
 	border:1px solid #666;
 	color: #666;
@@ -540,4 +683,78 @@ ul {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  
     /*IE4-IE9*/  
     filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);  
-}  
+} 
+
+.masklay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #969696;
+    opacity:0.5;
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+.overlay {
+    background-color: #fff;
+    width: 480px;
+    text-align: center;
+    display: none;
+    position: fixed;
+    top:30%;
+    right: 35%;
+    z-index: 9999;
+    margin: 0;
+}
+.overlay .lay-close {
+    cursor: pointer;
+    text-align: right;
+    margin-left: 400px; 
+    font-size: 18px;
+    font-weight: bold;
+}
+.overlay h4 {
+    color: #84E6CD;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.overlay hr {
+    width: 50px;
+}
+.overlay span {
+    display: block;
+    width: 430px;
+    height: 1.5em;
+    font-weight: bold;
+    line-height: 1.5em;
+    font-size: 18px;
+    margin: 20px auto;
+}
+.overlay .yes-btn {
+    display: block;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #26E6CD;
+    border: none; color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    float: left;
+    margin:20px 10px 10px 100px;
+}
+.overlay .no-btn {
+    display: block;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #26E6CD;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    float: left;
+    margin: 20px 0 10px 10px;
+} 
