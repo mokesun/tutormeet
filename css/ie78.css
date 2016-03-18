@@ -13,11 +13,15 @@ a{
     text-decoration: none;
 }
 .container-top{
-    background:url("https://corp.tutormeet.com/tutormeetent/img/gl/bg_banner.jpg") no-repeat;
+    background:url("https://corp.tutormeet.com/tutormeetent/img/gl/bg_banner.jpg") round;
     height: 150px;
     padding: 130px 0 0;
-    *height: 280px;
     width: 100%;
+    /*ie*/
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://corp.tutormeet.com/tutormeetent/img/gl/bg_banner.jpg',sizingMethod='scale');
+    *background-repeat: no-repeat;
+    *height: 280px;
+    *overflow: hidden;
 }
 
 .container2-top{
